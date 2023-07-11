@@ -54,7 +54,111 @@ body {
 .header .navbar a:hover {
   color: white;
 }
+/*  ------------------------------------*/
+.banner {
+  position: relative;
+  height: 500px;
+  background-image: url('images/bgg.webp');
+  background-size: cover;
+  background-position: center;
+  height: 650px;
+  position: relative;
+}
+.banner {
+  position: relative;
+  height: 500px;
+  background-image: url('images/bgg.webp');
+  background-size: contain; /* Adjust the background-size property */
+  background-position: center;
+  height: 650px;
+  position: relative;
+}
 
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 240, 245, 0.5);  /* Adjust the transparency as desired */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fade-in 2.5s ease-in-out forwards;
+}
+
+.containerr {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+}
+
+.containerr h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.containerr p {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: black;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px; /* Adjust the padding to make the button smaller */
+  
+  color: black;
+  text-decoration: none;
+  font-size: 16px; /* Adjust the font size to match the smaller button */
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.btn::after {
+  content: '\2192'; /* Add the arrow symbol using its Unicode */
+  display: inline-block;
+  margin-left: 5px; /* Add spacing between the button text and arrow */
+}
+
+.btn:hover {
+  background-color: pink;
+  color: white;
+}
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+/* Change the animation name and properties for the button */
+.btn-animation {
+  animation: scale-in 0.3s ease-in-out forwards;
+}
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
 
 /*feature product */
@@ -129,99 +233,6 @@ body {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*------------footer css --------------*/
-.footer {
-  background-color: black;
-  color:pink;
-  padding: 40px 20px;
-  text-align: center;
-  margin-top: -20px; /* Adjust the value to remove the gap */
-}
-
-.box-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.box {
-  flex-basis: 25%;
-  text-align: left;
-}
-
-.box h3 {
-  margin-bottom: 10px;
-  font-size: 30px;
-  color:pink ;
-}
-
-.box a {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: block;
-  margin-bottom: 5px;
-  color: pink ;
-  font-size: 20px;
-  padding-left: 5px;
-  text-decoration: none;
-}
-
-.box a i {
-  margin-right: 5px;
-  transition: .2s linear;
-}
-
-.box a:hover {
-  margin-left: 10px; /* Adjust the margin value as desired */
-  color: white;
-}
-.footer .box-container .box a:hover i{
-  padding-right: 1.5rem;
-}
-
-.credit {
-  padding-top: 20px;
-  text-align: center;
-  border-top: .2rem solid white;
-  padding-top: 15px;
-  font-size: 20px;
-  text-transform: uppercase;
-  color: white;
-}
-
-.credit span {
-  color: pink ;
-  font-weight: bold;
-}
-@media screen and (max-width: 768px) {
-  .header .navbar {
-    display: none;
-  }
-
-  #menu-btn {
-    display: flex;
-  }
-}
 
 
 
