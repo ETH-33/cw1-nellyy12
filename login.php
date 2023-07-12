@@ -1,37 +1,98 @@
+<?php
+
+@include 'config.php';
+
+session_start();
+
+if(isset($_POST['login'])){
+
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $pass = ($_POST['password']);
+   $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+
+   $result = mysqli_query($conn, $select);
+
+   if(mysqli_num_rows($result) > 0){
+
+      $row = mysqli_fetch_array($result);
+
+      if($row['user_type'] == 'admin'){
+
+         $_SESSION['admin_name'] = $row['admin'];
+         header('location:teacher.php');
+
+      }elseif($row['user_type'] == 'user'){
+
+         $_SESSION['user_name'] = $row['name'];
+         header('location:afterlogin.php');
+
+      }
+     
+   }else{
+      $error[] = 'incorrect email or password!';
+   }
+}
+   if(isset($_POST['reg'])){
+
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = ($_POST['password']);
+    $cpass = ($_POST['cpassword']);
+    // $user_type = "user";
+ 
+    $select = " SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+ 
+    $result = mysqli_query($conn, $select);
+ 
+    if(mysqli_num_rows($result) > 0){
+ 
+       $error[] = 'user already exist!';
+ 
+    }else{
+ 
+       if($pass != $cpass){
+          $error[] = 'password not matched!';
+       }else{
+          $insert = "INSERT INTO user_form(name, email, password) VALUES('$name','$email','$pass')";
+          mysqli_query($conn, $insert);
+          // header('location:login_form.php');
+          $error[] = 'You have been register successfully';
+       }
+    }
+};
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="Your website description" />
-    <meta
-      name="keywords"
-      content="hair cut, hair colour, lash extension, nail extension, hair extension, namicure&pedicure"
-    />
-    <meta name="author" content="Purnika Tiwary" />
+  
+    <meta name="author" content="Nelly kc" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta charset="UTF-8" />
     <title>Fragrance Haven</title>
     <title>Login/Signup Page</title>
-    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="loginn/login.css">
   </head>
   <body>
     <!-- Header -->
     <section class="header">
       <a href="home.html" class="logo">Fragrance Haven</a>
       <nav class="navbar">
-        <a href="/indexx/index.html">Home</a>
-        <a href="/ABOUT US/about.html">About</a>
-        <a href="products.html">Products</a>
-        <a href="/contact/contact.html">Contact Me</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="products.php">Products</a>
+        <!-- <a href="/contact/contact.html">Contact Me</a> -->
+        <a href="login.html">Login/Signup</a>
       </nav>
     </section>
   
       <div class="container">
         <div class="form-container">
-          <form id="login-form" class="form">
+          <form id="login-form" action="" class="form" method="post">
             <h1>Login</h1>
-            <input type="text" id="username" placeholder="Username/Email" required>
-            <input type="password" id="password" placeholder="Password" required>
+            <input type="text" id="username" name="email" placeholder="test@gmail.com" required>
+            <input type="password" id="password" name="password" placeholder="*********" required>
             <div class="form-options">
               <div class="remember-me">
                 <input type="checkbox" id="remember-me">
@@ -39,26 +100,25 @@
               </div>
               <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
-            <button type="submit">Login</button>
+            <button name="login" type="submit">Login</button>
             <div class="form-switch">
               <p>Don't have an account? <a href="#" class="switch-link" data-form="signup-form">Sign Up</a></p>
             </div>
           </form>
     
-          <form id="signup-form" class="form">
+          <form id="signup-form" class="form" method="post">
             <h1>Sign Up</h1>
-            <input type="text" id="name" placeholder="Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="signup-password" placeholder="Password" required>
-            <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="signup-password" name="password" placeholder="Password" required>
+            <input type="password" id="confirm-password" name="cpassword" placeholder="Confirm Password" required>
             <div class="form-options">
               <div class="remember-me">
                 <input type="checkbox" id="signup-remember-me">
                 <label for="signup-remember-me">Remember me</label>
               </div>
-              <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
-            <button type="submit">Sign Up</button>
+            <input name="reg" type="submit" value="Signup">
             <div class="form-switch">
               <p>Already have an account? <a href="#" class="switch-link" data-form="login-form">Login</a></p>
             </div>
@@ -66,7 +126,6 @@
         </div>
       </div>
     
-
     <!--------------footer starts------------->
     <section class="footer">
       <div class="box-container">
@@ -74,7 +133,7 @@
           <h3>Quick Links</h3>
           <a href="home.html"><i class="fas fa-angle-right"></i>Home</a>
           <a href="about.html"><i class="fas fa-angle-right"></i>About</a>
-          <a href="package.html"><i class="fas fa-angle-right"></i>Shop</a>
+          <a href="package.html"><i class="fas fa-angle-right"></i>Package</a>
           <a href="book.html"><i class="fas fa-angle-right"></i>Book</a>
         </div>
         <div class="box">
