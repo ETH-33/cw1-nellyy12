@@ -55,16 +55,7 @@ body {
   color: white;
 }
  /*--------- Offer Section -----------*/
-.offer-section {
-  /*background:  #D9C1D9;*/
-  padding: 50px 0;
-  text-align: center;
-}
 
-.offer-container {
-  max-width: 500px;
-  margin: 0 auto;
-}
 /*------------footer css --------------*/
 .footer {
   background-color: black;
@@ -258,3 +249,6 @@ body {
 #login-form.flip-to-signup {
   transform: rotateY(180deg);
 }
+
+
+
