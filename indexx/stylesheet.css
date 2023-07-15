@@ -55,7 +55,7 @@ body {
   color: white;
 }
 /*  ------------------------------------*/
-.banner {
+ /* .banner {
   position: relative;
   height: 500px;
   background-image: url('/indexx/bg.jpg');
@@ -63,11 +63,11 @@ body {
   background-position: center;
   height: 650px;
   position: relative;
-}
+} */
 .banner {
   position: relative;
   height: 500px;
-  background-image: url('images/bgg.webp');
+  background-image: url('/indexx/images/bg.jpg');
   background-size: contain; /* Adjust the background-size property */
   background-position: center;
   height: 650px;
