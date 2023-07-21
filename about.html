@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/ABOUT US/about.css">
+    <link rel="stylesheet" href="ABOUT US/about.css">
     <title>Document</title>
 </head>
 <body>
    <!-- Header -->
-   <section class="header">
-    <a href="home.html" class="logo">Fragrance Haven</a>
-    <nav class="navbar">
-      <a href="/indexx/index.html">Home</a>
-      <a href="/ABOUT US/about.html">About</a>
-      <a href="products.html">Products</a>
-      <a href="/contact/contact.html">Contact Me</a>
-    </nav>
-  </section>
+<section class="header">
+  <a href="home.html" class="logo">Fragrance Haven</a>
+  <nav class="navbar">
+    <a href="/indexx/index.html">Home</a>
+    <a href="/ABOUT US/about.html">About</a>
+    <a href="products.html">Products</a>
+    <a href="mycart.php">My Cart</a>
+    <a href="#">
+      <?php echo $_SESSION['user_name']?>
+    </a>
+    <a href="#">Logout</a>
+  </nav>
+</section>
 
  <!-------------- ABOUT US-------------->
     <div class="about-section">

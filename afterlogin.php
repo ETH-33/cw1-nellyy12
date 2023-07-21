@@ -11,16 +11,17 @@
   </head>
   <body>
     <!-- Header -->
-    <section class="header">
-      <a href="home.html" class="logo">Fragrance Haven</a>
-      <nav class="navbar">
+<section class="header">
+    <a href="home.html" class="logo">Fragrance Haven</a>
+    <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="products.html">Products</a>
-        <a href="login.php">Login/Signup</a>
-      </nav>
-    </section>
-
+        <a href="product.php">Products</a>
+        <a href="mycart.php">My Cart</a>
+        <a href="#"><?php echo $_SESSION['user_name']?></a>
+        <a href="logout.php">Logout</a>
+    </nav>
+</section>
 <!-----------------------------------service-->
 
 
